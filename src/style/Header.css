@@ -1,0 +1,31 @@
+.header_panel {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  margin: 20px auto;
+}
+.header_form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-30%);
+}
+.header_search {
+  padding: 5px;
+  margin: 2px 15px;
+}
+
+.header_button {
+  padding: 5px 10px;
+  margin-right: 15px;
+}
+
+.header_select {
+  padding: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.header_logo {
+  height: 150px;
+}
