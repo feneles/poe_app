@@ -11,13 +11,18 @@ function Header({
   apiKeyAccount,
   setIsActive,
   isActive,
+  setCharacterName,
 }) {
-  const characterList = data.map((character) => (
-    <option
-      key={character.name}
-      value={character.name}
-    >{`${character.name}, lvl:${character.level}, ${character.class} `}</option>
-  ));
+  const isDataExist = Array.isArray(data) && data.length;
+
+  const characterList = isDataExist
+    ? data.map((character) => (
+        <option
+          key={character.name}
+          value={character.name}
+        >{`${character.name}, lvl:${character.level}, ${character.class} `}</option>
+      ))
+    : null;
 
   function handleButton(e) {
     e.preventDefault();
@@ -27,8 +32,8 @@ function Header({
       fetch(apiKeyAccount)
         .then((response) => response.json())
         .then((data) => setData(data));
-      console.log(data);
       setIsActive(true);
+      console.log(characterName);
     }
   }
 
@@ -50,7 +55,7 @@ function Header({
           <div class="input-group-append">
             <button
               class="btn btn-outline-secondary"
-              type="button"
+              type="submit"
               onClick={handleButton}
             >
               Search
@@ -66,6 +71,7 @@ function Header({
             value={characterName}
             onChange={handleCharacterSubmit}
           >
+            <option style={{ display: "none" }}>-- Select Character --</option>
             {isActive ? characterList : ""}
           </select>
         </div>

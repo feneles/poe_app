@@ -1,18 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/Main.css";
 
 function Main({ items, characterName }) {
-  // const [itemHelm, setItemHelm] = useState("");
+  const [helm, setHelm] = useState({});
 
-  // const getHelmet = items.items.find((item) => item.inventoryId === "Helm");
+  const isDataExist = Array.isArray(items) && items.length;
 
-  //  setItemHelm(getHelmet);
+  useEffect(() => {
+    // console.log(items);
+    if (!isDataExist) {
+      return;
+    } else {
+      const helmet = items.find((item) => item.inventoryId === "Helm");
+      setHelm(helmet);
+    }
+  }, [characterName]);
 
   return (
     <div className="main_wrap">
       <div className="main_mainhand"></div>
       <div className="main_helm">
-        {/* <img src={getHelmet.icon} alt="helm" /> */}
+        <p></p>
+        <img src={helm ? helm.icon : null} alt="helm" />
       </div>
       <div className="main_offhand"></div>
       <div className="main_armour"></div>
