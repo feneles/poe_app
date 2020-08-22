@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
-import "../style/Main.css";
 
-function Main({ items, characterName }) {
+function Main({ items, characterName, isLoading }) {
   const [helm, setHelm] = useState({});
 
   const isDataExist = Array.isArray(items) && items.length;
 
   useEffect(() => {
-    // console.log(items);
     if (!isDataExist) {
       return;
     } else {
       const helmet = items.find((item) => item.inventoryId === "Helm");
       setHelm(helmet);
     }
-  }, [characterName]);
+  }, [characterName, isDataExist, items]);
 
   return (
     <div className="main_wrap">
       <div className="main_mainhand"></div>
       <div className="main_helm">
-        <p></p>
-        <img src={helm ? helm.icon : null} alt="helm" />
+        {isLoading && <span>Loading...</span>}
+        {!isLoading && helm.icon && <img src={helm.icon} alt="helm" />}
       </div>
       <div className="main_offhand"></div>
       <div className="main_armour"></div>
