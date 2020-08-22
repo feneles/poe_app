@@ -1,36 +1,61 @@
-import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import Main from "./components/Main";
 import Aside from "./components/Aside";
 import Header from "./components/Header";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Main from "./components/Main";
 
 // import apiAccount from "./apiAccount";
 
 function App() {
+  const [IS_LOADING, SET_IS_LOADING] = useState(false);
+
   const [accountName, setAccountName] = useState("");
   const [characterName, setCharacterName] = useState("");
-  const [data, setData] = useState([]);
+  const [accountData, setAccountData] = useState([]);
   const [characterData, setCharacterData] = useState({});
   const [items, setItems] = useState([]);
-  const [isActive, setIsActive] = useState(false);
 
   const apiKeyAccount = `/character-window/get-characters?accountName=${accountName}`;
   const apiKeyCharacter = `/character-window/get-items?accountName=${accountName}&character=${characterName}`;
-  const isDataExist = Array.isArray(data) && data.length;
 
   useEffect(() => {
-    console.log(items);
-    const getCharacter = isDataExist
-      ? data.find((char) => char.name === characterName)
-      : null;
-    setCharacterData(getCharacter);
+    const foundCharacter = accountData.find(
+      (char) => char.name === characterName
+    );
+    setCharacterData(foundCharacter);
 
-    fetch(apiKeyCharacter)
+    // fetch(apiKeyCharacter)
+    //   .then((response) => response.json())
+    //   .then((res) => setItems(res.items)); // Wrong URL
+  }, [accountData, apiKeyCharacter, characterName]);
+
+  const characterList = accountData.map((character) => (
+    <option
+      key={character.name}
+      value={character.name}
+    >{`${character.name}, lvl:${character.level}, ${character.class} `}</option>
+  ));
+  useEffect(() => {
+    console.log(characterList);
+  }, [characterList]);
+
+  const handleButton = (e) => {
+    e.preventDefault();
+
+    if (!accountName) return;
+    SET_IS_LOADING(true);
+    fetch(apiKeyAccount)
       .then((response) => response.json())
-      .then((res) => setItems(res.items));
-    console.log(items);
-  }, [characterName]);
+      .then((data) => {
+        setAccountData(data);
+        SET_IS_LOADING(false);
+      })
+      .catch((e) => {
+        console.error(e);
+        SET_IS_LOADING(false);
+      });
+  };
 
   const handleAccountSubmit = (e) => {
     setAccountName(e.target.value);
@@ -47,16 +72,13 @@ function App() {
     <div className="wrapper">
       <div className="app">
         <Header
-          accountName={accountName}
-          characterName={characterName}
           handleAccountSubmit={handleAccountSubmit}
+          accountName={accountName}
+          handleButton={handleButton}
+          characterName={characterName}
           handleCharacterSubmit={handleCharacterSubmit}
-          setCharacterName={setCharacterName}
-          data={data}
-          apiKeyAccount={apiKeyAccount}
-          setData={setData}
-          setIsActive={setIsActive}
-          isActive={isActive}
+          characterList={characterList}
+          isLoading={IS_LOADING}
         />
         <Aside characterName={characterName} characterData={characterData} />
         <Main

@@ -2,14 +2,6 @@ import React from "react";
 import "../style/Aside.css";
 
 function Aside({ characterData, characterName }) {
-  // const characters = data.map((character) => (
-  //   <h1 key={character.name}>
-  //     {character.name}
-  //     LVL:
-  //     {character.level}
-  //   </h1>
-  // ));
-
   const handleImg = characterData ? characterData.class : "Marauder";
 
   return (

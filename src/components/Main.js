@@ -14,7 +14,7 @@ function Main({ items, characterName }) {
       const helmet = items.find((item) => item.inventoryId === "Helm");
       setHelm(helmet);
     }
-  }, [characterName]);
+  }, [characterName, isDataExist, items]);
 
   return (
     <div className="main_wrap">
