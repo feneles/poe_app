@@ -1,12 +1,11 @@
 import React from "react";
-import "../style/Header.css";
 
 const Header = ({
+  handleCharacterSubmit,
   handleAccountSubmit,
   accountName,
   handleButton,
   characterName,
-  handleCharacterSubmit,
   characterList,
   isLoading
 }) => {

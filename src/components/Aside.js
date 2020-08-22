@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/Aside.css";
 
 function Aside({ characterData, characterName }) {
   const handleImg = characterData ? characterData.class : "Marauder";

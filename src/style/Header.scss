@@ -1,3 +1,5 @@
+
+
 .header_panel {
   position: relative;
   display: flex;
@@ -6,6 +8,7 @@
   margin: 20px auto;
 }
 .header_form {
+  min-width: 500px;
   position: absolute;
   left: 50%;
   transform: translateX(-30%);

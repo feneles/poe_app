@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import Aside from "./components/Aside";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -16,35 +16,11 @@ function App() {
   const [characterData, setCharacterData] = useState({});
   const [items, setItems] = useState([]);
 
-  const apiKeyAccount = `/character-window/get-characters?accountName=${accountName}`;
-  const apiKeyCharacter = `/character-window/get-items?accountName=${accountName}&character=${characterName}`;
+  const getAccountData = (uName) => {
+    const apiKeyAccount = `/character-window/get-characters?accountName=${uName}`;
 
-  useEffect(() => {
-    const foundCharacter = accountData.find(
-      (char) => char.name === characterName
-    );
-    setCharacterData(foundCharacter);
-
-    // fetch(apiKeyCharacter)
-    //   .then((response) => response.json())
-    //   .then((res) => setItems(res.items)); // Wrong URL
-  }, [accountData, apiKeyCharacter, characterName]);
-
-  const characterList = accountData.map((character) => (
-    <option
-      key={character.name}
-      value={character.name}
-    >{`${character.name}, lvl:${character.level}, ${character.class} `}</option>
-  ));
-  useEffect(() => {
-    console.log(characterList);
-  }, [characterList]);
-
-  const handleButton = (e) => {
-    e.preventDefault();
-
-    if (!accountName) return;
     SET_IS_LOADING(true);
+
     fetch(apiKeyAccount)
       .then((response) => response.json())
       .then((data) => {
@@ -57,16 +33,57 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    const getEquipement = (uName, chName) => {
+      if(!uName || !chName) return;
+      const apiKeyCharacter = `/character-window/get-items?accountName=${uName}&character=${chName}`;
+      
+      SET_IS_LOADING(true);
+      fetch(apiKeyCharacter)
+        .then((response) => response.json())
+        .then((res) => {
+          setItems(res.items);
+          SET_IS_LOADING(false);
+        })
+        .catch((e) => {
+          console.error(e);
+          SET_IS_LOADING(false);
+        });
+    };
+
+    return getEquipement(accountName, characterName);
+  }, [accountName, characterName]);
+
+  useEffect(() => {
+    const foundCharacter = accountData.find(
+      (char) => char.name === characterName
+    );
+    setCharacterData(foundCharacter);
+  }, [accountData, characterName]);
+
+  
+  // Create an option for each character found
+  const characterList = accountData.map((character) => (
+    <option
+      key={character.name}
+      value={character.name}
+    >{`${character.name}, lvl:${character.level}, ${character.class} `}</option>
+  ));
+
+  const handleButton = (e) => {
+    e.preventDefault();
+
+    if (!accountName) return;
+    // search for the user by accountName
+    getAccountData(accountName)
+  };
+
   const handleAccountSubmit = (e) => {
     setAccountName(e.target.value);
   };
   const handleCharacterSubmit = (e) => {
     setCharacterName(e.target.value);
   };
-
-  // Find, wyszukuje z tablicy wartości characterName
-
-  // UseEffect odswieza characterData z kazda zmiana characterName
 
   return (
     <div className="wrapper">
@@ -86,6 +103,7 @@ function App() {
           characterName={characterName}
           characterData={characterData}
           setItems={setItems}
+          isLoading={IS_LOADING}
         />
       </div>
     </div>
