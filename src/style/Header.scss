@@ -1,34 +1,36 @@
+.header {
+  &_panel {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    margin: 20px auto;
+  }
 
+  &_form {
+    min-width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-30%);
+  }
 
-.header_panel {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 10vh;
-  margin: 20px auto;
-}
-.header_form {
-  min-width: 500px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-30%);
-}
-.header_search {
-  padding: 5px;
-  margin: 2px 15px;
-}
+  &_search {
+    padding: 5px;
+    margin: 2px 15px;
+  }
 
-.header_button {
-  padding: 5px 10px;
-  margin-right: 15px;
-}
+  &_button {
+    padding: 5px 10px;
+    margin-right: 15px;
+  }
 
-.header_select {
-  padding: 5px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
+  &_select {
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
 
-.header_logo {
-  height: 150px;
+  &_logo {
+    height: 150px;
+  }
 }
