@@ -7,7 +7,7 @@ const Header = ({
   handleButton,
   characterName,
   characterList,
-  isLoading
+  isLoading,
 }) => {
   return (
     <div className="header_panel">
@@ -43,8 +43,12 @@ const Header = ({
             onChange={handleCharacterSubmit}
           >
             {isLoading && <option>Loading data...</option>}
-            {!isLoading && characterList.length <= 0 && <option>No data</option>}
-            {!isLoading && characterList.length > 0 && <option>-- Select Character --</option>}
+            {!isLoading && characterList.length <= 0 && (
+              <option>No data</option>
+            )}
+            {!isLoading && characterList.length > 0 && (
+              <option>-- Select Character --</option>
+            )}
             {!isLoading && characterList.length > 0 && characterList}
           </select>
         </div>

@@ -5,8 +5,6 @@ import Aside from "./components/Aside";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
-// import apiAccount from "./apiAccount";
-
 function App() {
   const [IS_LOADING, SET_IS_LOADING] = useState(false);
 
@@ -35,9 +33,9 @@ function App() {
 
   useEffect(() => {
     const getEquipement = (uName, chName) => {
-      if(!uName || !chName) return;
+      if (!uName || !chName) return;
       const apiKeyCharacter = `/character-window/get-items?accountName=${uName}&character=${chName}`;
-      
+
       SET_IS_LOADING(true);
       fetch(apiKeyCharacter)
         .then((response) => response.json())
@@ -61,7 +59,6 @@ function App() {
     setCharacterData(foundCharacter);
   }, [accountData, characterName]);
 
-  
   // Create an option for each character found
   const characterList = accountData.map((character) => (
     <option
@@ -75,7 +72,7 @@ function App() {
 
     if (!accountName) return;
     // search for the user by accountName
-    getAccountData(accountName)
+    getAccountData(accountName);
   };
 
   const handleAccountSubmit = (e) => {
@@ -98,13 +95,7 @@ function App() {
           isLoading={IS_LOADING}
         />
         <Aside characterName={characterName} characterData={characterData} />
-        <Main
-          items={items}
-          characterName={characterName}
-          characterData={characterData}
-          setItems={setItems}
-          isLoading={IS_LOADING}
-        />
+        <Main items={items} />
       </div>
     </div>
   );
