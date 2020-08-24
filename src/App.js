@@ -22,8 +22,14 @@ function App() {
     fetch(apiKeyAccount)
       .then((response) => response.json())
       .then((data) => {
-        setAccountData(data);
-        SET_IS_LOADING(false);
+        if (data.error) {
+          data.error.message === "Forbidden"
+            ? alert("This account is private!")
+            : alert("Wrong account name!");
+        } else {
+          setAccountData(data);
+          SET_IS_LOADING(false);
+        }
       })
       .catch((e) => {
         console.error(e);
