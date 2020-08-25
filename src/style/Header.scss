@@ -31,6 +31,45 @@
   }
 
   &_logo {
-    height: 150px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .header_panel {
+    height: 15vh;
+  }
+}
+
+@media (max-width: 850px) {
+  .header {
+    &_panel {
+      height: 7vh;
+    }
+    &_form {
+      transform: scale(0.7);
+      left: 28.3%;
+      top: -20px;
+    }
+
+    &_logo {
+      height: 70px;
+      margin-left: 30px;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .header {
+    &_form {
+      transform: scale(0.6);
+      left: 22%;
+    }
+    &_logo {
+      height: 65px;
+    }
+    &_panel {
+      margin-top: 10px;
+    }
   }
 }

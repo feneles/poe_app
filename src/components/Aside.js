@@ -4,7 +4,7 @@ function Aside({ characterData, characterName }) {
   const handleImg = characterData ? characterData.class : "Marauder";
 
   return (
-    <div className="aside_wrap">
+    <div className="aside_wrap ">
       <div className="aside_class">
         <img
           className="aside_class--icon"

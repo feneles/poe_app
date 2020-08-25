@@ -1,6 +1,163 @@
-.main_wrap {
-  width: 70%;
-  height: 75vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
+.main {
+  &_wrap {
+    width: 70%;
+    height: 75vh;
+    // background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+  }
+  &_items {
+    margin-top: 15vh;
+    position: relative;
+    height: 292px;
+    width: 397px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    left: 30%;
+    transform: translateX(-50%);
+    transform: scale(1.3);
+  }
+  &_weapon {
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    border: 1px solid rgb(255, 255, 119);
+    background-color: #222;
+    width: 94px;
+    height: 188px;
+  }
+  &_offhand {
+    position: absolute;
+    left: 302px;
+    top: 5px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 94px;
+    height: 188px;
+    background-color: #222;
+  }
+  &_helm {
+    position: absolute;
+    left: 151px;
+    top: 0px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 94px;
+    height: 94px;
+    background-color: #222;
+  }
+  &_gloves {
+    position: absolute;
+    left: 52px;
+    top: 198px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 94px;
+    height: 94px;
+    background-color: #222;
+  }
+  &_armour {
+    position: absolute;
+    left: 151px;
+    top: 99px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 94px;
+    height: 141px;
+    background-color: #222;
+  }
+  &_boots {
+    position: absolute;
+    left: 250px;
+    top: 198px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 94px;
+    height: 94px;
+    background-color: #222;
+  }
+  &_left--ring {
+    position: absolute;
+    left: 99px;
+    top: 146px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 47px;
+    height: 47px;
+    background-color: #222;
+  }
+  &_right--ring {
+    position: absolute;
+    left: 250px;
+    top: 146px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 47px;
+    height: 47px;
+    background-color: #222;
+  }
+  &_amulet {
+    position: absolute;
+    left: 250px;
+    top: 94px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 47px;
+    height: 47px;
+    background-color: #222;
+  }
+  &_belt {
+    position: absolute;
+    left: 151px;
+    top: 245px;
+    border: 1px solid rgb(255, 255, 119);
+    width: 94px;
+    height: 47px;
+    background-color: #222;
+  }
+}
+.itemIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1025px) {
+  .main {
+    &_items {
+      transform: scale(1.3);
+      left: 12%;
+    }
+    &_wrap {
+      padding-left: 80px;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .main {
+    &_items {
+      transform: scale(0.9);
+      left: -8%;
+      top: -15%;
+    }
+    &_wrap {
+      padding-left: 80px;
+    }
+  }
+}
+@media (max-width: 680px) {
+  .main {
+    &_items {
+      transform: scale(0.7);
+      top: -20%;
+    }
+    &_wrap {
+      padding-left: 50px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .main {
+    &_items {
+      transform: scale(0.65);
+      top: -25%;
+    }
+    &_wrap {
+      padding-left: 30px;
+    }
+  }
 }

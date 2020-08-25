@@ -14,6 +14,8 @@ function App() {
   const [characterData, setCharacterData] = useState({});
   const [items, setItems] = useState([]);
 
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
   const getAccountData = (uName) => {
     const apiKeyAccount = `/character-window/get-characters?accountName=${uName}`;
 
@@ -90,6 +92,15 @@ function App() {
 
   return (
     <div className="wrapper">
+      <div className="portrait">
+        <div className="portrait_bg">
+          <h2 className="portrait_firstText">Screen is too tide!</h2>
+          <h3 className="portrait_secondText">
+            Change the browser orientation to landscape.
+          </h3>
+          <img className="portrait_img" src="/img/phone.png" alt="" />
+        </div>
+      </div>
       <div className="app">
         <Header
           handleAccountSubmit={handleAccountSubmit}
@@ -102,6 +113,9 @@ function App() {
         />
         <Aside characterName={characterName} characterData={characterData} />
         <Main items={items} />
+        <footer className="footer">
+          <h5>Copyright© by Pan Michał</h5>
+        </footer>
       </div>
     </div>
   );

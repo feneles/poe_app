@@ -12,59 +12,25 @@ function Main({ items }) {
       return {};
     }
   };
+  const getItemIcon = (id) => {
+    if (getItemDetails(id)) {
+      return <img className="itemIcon" src={getItemDetails(id).icon} alt="" />;
+    } else return null;
+  };
 
   return (
     <div className="main_wrap">
-      <div className="main_weapon">
-        {getItemDetails("Weapon") ? (
-          <img src={getItemDetails("Weapon").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_helm">
-        {getItemDetails("Helm") ? (
-          <img src={getItemDetails("Helm").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_offhand">
-        {getItemDetails("Offhand") ? (
-          <img src={getItemDetails("Offhand").icon} alt="" />
-        ) : null}
-      </div>
-
-      <div className="main_gloves">
-        {getItemDetails("Gloves") ? (
-          <img src={getItemDetails("Gloves").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_armour">
-        {getItemDetails("BodyArmour") ? (
-          <img src={getItemDetails("BodyArmour").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_belt">
-        {getItemDetails("Belt") ? (
-          <img src={getItemDetails("Belt").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_boots">
-        {getItemDetails("Boots") ? (
-          <img src={getItemDetails("Boots").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_left--ring">
-        {getItemDetails("Ring") ? (
-          <img src={getItemDetails("Ring").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_right--ring">
-        {getItemDetails("Ring2") ? (
-          <img src={getItemDetails("Ring2").icon} alt="" />
-        ) : null}
-      </div>
-      <div className="main_amulet">
-        {getItemDetails("Amulet") ? (
-          <img src={getItemDetails("Amulet").icon} alt="" />
-        ) : null}
+      <div className="main_items">
+        <div className="main_weapon">{getItemIcon("Weapon")}</div>
+        <div className="main_helm">{getItemIcon("Helm")}</div>
+        <div className="main_offhand">{getItemIcon("Offhand")}</div>
+        <div className="main_gloves">{getItemIcon("Gloves")}</div>
+        <div className="main_armour">{getItemIcon("BodyArmour")}</div>
+        <div className="main_belt">{getItemIcon("Belt")}</div>
+        <div className="main_boots">{getItemIcon("Boots")}</div>
+        <div className="main_left--ring">{getItemIcon("Ring")}</div>
+        <div className="main_right--ring">{getItemIcon("Ring2")}</div>
+        <div className="main_amulet">{getItemIcon("Amulet")}</div>
       </div>
     </div>
   );

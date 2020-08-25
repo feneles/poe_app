@@ -10,17 +10,127 @@
   box-sizing: border-box;
 }
 
-.app {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1280px;
-  min-height: 100vh;
-  margin: auto;
-  font-family: "Montserrat", sans-serif;
-}
-
 .wrapper {
   height: 100vh;
   width: 100vw;
   background-image: url("/img/bg.jpg");
+}
+
+.app {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.45);
+  flex-wrap: wrap;
+  max-width: 1280px;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+.portrait {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/img/bg.jpg");
+  z-index: 1;
+  display: none;
+
+  &_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+
+  &_firstText {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 47px;
+    text-shadow: -1px -1px 0 #000, -2px -2px 1px #000;
+  }
+
+  &_secondText {
+    position: absolute;
+    margin: 5px 20px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, -2px -2px 1px #000;
+  }
+  &_img {
+    position: absolute;
+    height: 260px;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.footer {
+  color: white;
+  width: 100%;
+  text-align: center;
+  line-height: 100%;
+  text-shadow: -1px -1px 0 #000, -2px -2px 1px #000;
+}
+
+@media (max-width: 850px) {
+  .app {
+    overflow: hidden;
+  }
+  .wrapper {
+    background-size: cover;
+  }
+  .footer h5 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer h5 {
+    font-size: 13px;
+  }
+}
+
+@media (orientation: portrait) {
+  .portrait {
+    display: block;
+  }
+}
+
+@media (orientation: portrait), (max-height: 850px) {
+  .portrait {
+    &_firstText {
+      top: 30%;
+      font-size: 25px;
+    }
+
+    &_secondText {
+      margin: 5px 20px;
+      top: 50%;
+      font-size: 25px;
+    }
+    &_img {
+      height: 150px;
+    }
+  }
+}
+@media (orientation: portrait), (max-height: 600px) {
+  .portrait {
+    &_firstText {
+      top: 30%;
+      font-size: 20px;
+    }
+
+    &_secondText {
+      margin: 5px 10px;
+      top: 50%;
+      font-size: 18px;
+    }
+    &_img {
+      height: 120px;
+    }
+  }
 }
