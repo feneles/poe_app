@@ -100,7 +100,7 @@
   }
 }
 
-@media (orientation: portrait), (max-height: 850px) {
+@media (orientation: portrait) and (max-height: 850px) {
   .portrait {
     &_firstText {
       top: 30%;
@@ -117,7 +117,7 @@
     }
   }
 }
-@media (orientation: portrait), (max-height: 600px) {
+@media (orientation: portrait) and (max-height: 600px) {
   .portrait {
     &_firstText {
       top: 30%;

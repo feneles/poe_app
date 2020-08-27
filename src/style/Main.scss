@@ -115,6 +115,34 @@
   transform: translate(-50%, -50%);
 }
 
+.stats {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  z-index: 1;
+  background-color: BLACK;
+  width: 100%;
+  text-align: center;
+}
+.stats h6 {
+  background-color: #222;
+  color: yellow;
+}
+
+.item_stats--explicit {
+  font-size: 8px;
+  color: lightblue;
+}
+.item_stats--properties {
+  height: 200px;
+  width: 200px;
+  font-size: 8px;
+  color: white;
+}
+.item_stats p :nth-child(1) {
+  color: white;
+}
+
 @media (max-width: 1025px) {
   .main {
     &_items {

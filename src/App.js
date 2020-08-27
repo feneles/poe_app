@@ -94,7 +94,7 @@ function App() {
     <div className="wrapper">
       <div className="portrait">
         <div className="portrait_bg">
-          <h2 className="portrait_firstText">Screen is too tide!</h2>
+          <h2 className="portrait_firstText">Screen is too tight!</h2>
           <h3 className="portrait_secondText">
             Change the browser orientation to landscape.
           </h3>
@@ -112,7 +112,7 @@ function App() {
           isLoading={IS_LOADING}
         />
         <Aside characterName={characterName} characterData={characterData} />
-        <Main items={items} />
+        <Main items={items} characterName={characterName} />
         <footer className="footer">
           <h5>Copyright© by Pan Michał</h5>
         </footer>
