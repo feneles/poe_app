@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-function Main({ items, characterName }) {
+function Main({ items }) {
   const getItemDetails = (name) => {
     if (!name) return;
 
@@ -10,6 +10,7 @@ function Main({ items, characterName }) {
       return {};
     }
   };
+
   const getItemIcon = (id) => {
     if (getItemDetails(id)) {
       return <img className="itemIcon" src={getItemDetails(id).icon} alt="" />;
@@ -27,15 +28,26 @@ function Main({ items, characterName }) {
             <h6>{getItemDetails(id).typeLine}</h6>
           </div>
           <div className="item_stats--properties">
-            <div>
+            <div className="item_stats--topProperties">
               {currentItemHasProperties &&
                 curentItemProperties.map((prop) => {
-                  Object.entries(prop).map(([key, value]) => {
-                    if (key === "name") return <p>{value}</p>;
+                  return Object.entries(prop).map(([key, value]) => {
+                    if (key === "name")
+                      return (
+                        <span className="item_stats--name">
+                          <br />
+                          {value}
+                        </span>
+                      );
                     else if (key === "values") {
-                      if (value.length > 0) return <p>{value[0][0]}</p>;
+                      if (value.length > 0)
+                        return (
+                          <span className="item_stats--value">
+                            {`: ${value[0][0]}`}
+                          </span>
+                        );
                       else return null;
-                    }
+                    } else return null;
                   });
                 })}
             </div>
@@ -49,7 +61,7 @@ function Main({ items, characterName }) {
                   ))
                 : ""}
             </div>
-            <p className="">{getItemDetails(id).craftedMods}</p>
+            <p className="item_crafted">{getItemDetails(id).craftedMods}</p>
           </div>
         </div>
       );
@@ -60,18 +72,45 @@ function Main({ items, characterName }) {
     <div className="main_wrap">
       <div className="main_items">
         <div className="main_weapon">
-          <div className="stats">{getItemStats("Weapon")}</div>
           {getItemIcon("Weapon")}
+          <div className="stats">{getItemStats("Weapon")}</div>
         </div>
-        <div className="main_helm">{getItemIcon("Helm")}</div>
-        <div className="main_offhand">{getItemIcon("Offhand")}</div>
-        <div className="main_gloves">{getItemIcon("Gloves")}</div>
-        <div className="main_armour">{getItemIcon("BodyArmour")}</div>
-        <div className="main_belt">{getItemIcon("Belt")}</div>
-        <div className="main_boots">{getItemIcon("Boots")}</div>
-        <div className="main_left--ring">{getItemIcon("Ring")}</div>
-        <div className="main_right--ring">{getItemIcon("Ring2")}</div>
-        <div className="main_amulet">{getItemIcon("Amulet")}</div>/
+        <div className="main_helm">
+          {getItemIcon("Helm")}
+          <div className="stats">{getItemStats("Helm")}</div>
+        </div>
+        <div className="main_offhand">
+          {getItemIcon("Offhand")}
+          <div className="stats">{getItemStats("Offhand")}</div>
+        </div>
+        <div className="main_gloves">
+          {getItemIcon("Gloves")}
+          <div className="stats">{getItemStats("Gloves")}</div>
+        </div>
+        <div className="main_armour">
+          {getItemIcon("BodyArmour")}
+          <div className="stats">{getItemStats("BodyArmour")}</div>
+        </div>
+        <div className="main_belt">
+          {getItemIcon("Belt")}
+          <div className="stats">{getItemStats("Belt")}</div>
+        </div>
+        <div className="main_boots">
+          {getItemIcon("Boots")}
+          <div className="stats">{getItemStats("Boots")}</div>
+        </div>
+        <div className="main_left--ring">
+          {getItemIcon("Ring")}
+          <div className="stats">{getItemStats("Ring")}</div>
+        </div>
+        <div className="main_right--ring">
+          {getItemIcon("Ring2")}
+          <div className="stats">{getItemStats("Ring2")}</div>
+        </div>
+        <div className="main_amulet">
+          {getItemIcon("Amulet")}
+          <div className="stats">{getItemStats("Amulet")}</div>
+        </div>
       </div>
     </div>
   );

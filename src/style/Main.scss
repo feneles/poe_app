@@ -115,32 +115,69 @@
   transform: translate(-50%, -50%);
 }
 
+.itemIcon:hover + div {
+  display: block;
+}
+
 .stats {
   position: fixed;
+  display: none;
+  left: -305px;
   width: 300px;
-  height: 300px;
   z-index: 1;
   background-color: BLACK;
-  width: 100%;
   text-align: center;
+  border: 1px solid yellow;
 }
 .stats h6 {
   background-color: #222;
   color: yellow;
+
+  margin: 0;
+}
+
+.item {
+  margin: 0 auto;
+  padding: 0;
+}
+.item_crafted {
+  font-size: 10px;
+}
+
+.item_name {
+  margin: 0;
+  background-color: #222;
+  border: 1px solid yellow;
 }
 
 .item_stats--explicit {
-  font-size: 8px;
+  font-size: 10px;
   color: lightblue;
 }
-.item_stats--properties {
-  height: 200px;
-  width: 200px;
-  font-size: 8px;
-  color: white;
+.item_stats--explicit p {
+  margin: 0;
+  color: #8888ff;
 }
-.item_stats p :nth-child(1) {
-  color: white;
+.item_stats--properties {
+  height: 100%;
+  width: 100%;
+  font-size: 9px;
+}
+.item_stats--name {
+  margin: 0 auto;
+  color: #888;
+}
+.item_stats--value {
+  margin: 0 auto;
+  color: #8888ff;
+}
+.item_stats--topProperties {
+  padding-bottom: 5px;
+
+  box-shadow: 2px 4px 10px -5px #888;
+}
+.show_Item {
+  display: block;
 }
 
 @media (max-width: 1025px) {

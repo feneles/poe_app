@@ -17,11 +17,11 @@ function App() {
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
   const getAccountData = (uName) => {
-    const apiKeyAccount = `/character-window/get-characters?accountName=${uName}`;
+    const apiKeyAccount = `https://www.pathofexile.com/character-window/get-characters?accountName=${uName}`;
 
     SET_IS_LOADING(true);
 
-    fetch(apiKeyAccount)
+    fetch(proxyUrl + apiKeyAccount)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -42,10 +42,10 @@ function App() {
   useEffect(() => {
     const getEquipement = (uName, chName) => {
       if (!uName || !chName) return;
-      const apiKeyCharacter = `/character-window/get-items?accountName=${uName}&character=${chName}`;
+      const apiKeyCharacter = `https://www.pathofexile.com/character-window/get-items?accountName=${uName}&character=${chName}`;
 
       SET_IS_LOADING(true);
-      fetch(apiKeyCharacter)
+      fetch(proxyUrl + apiKeyCharacter)
         .then((response) => response.json())
         .then((res) => {
           setItems(res.items);
@@ -114,7 +114,7 @@ function App() {
         <Aside characterName={characterName} characterData={characterData} />
         <Main items={items} characterName={characterName} />
         <footer className="footer">
-          <h5>Copyright© by Pan Michał</h5>
+          <h5>Copyright© by Marek Rogala</h5>
         </footer>
       </div>
     </div>
