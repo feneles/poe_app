@@ -1,4 +1,6 @@
-<strong>This is my firs app. It's a character browser for popular multiplayer game "Path of Exile", it's based on two API's. One of them is asking for account names, and the second one is asking for character names associated with those accounts. It allowes you to check what kind of equipment a selected character is currently equipped with. If you dont have an account for Path of Exile, pelase use one of the examples below.</strong>
+<strong>It's an character browser app for my favourite game "Path of Exile", it's based on two APIs and reverse proxy (because PoE does not allow requests to their website). One of them is asking for account names, and the second one is asking for character names associated with those accounts. It allowes you to check what kind of equipment a selected character is currently equipped with. </strong>
+  
+<strong>If you don't have an account for Path of Exile, pelase use one of the examples below or use pre-filed value and just hit search.</strong>
 
 Accounts:<strong> Anavrinsic, MaisterZet, nugiyen, pidzama</strong>
 
