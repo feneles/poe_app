@@ -8,7 +8,7 @@ import Main from "./components/Main";
 function App() {
   const [IS_LOADING, SET_IS_LOADING] = useState(false);
 
-  const [accountName, setAccountName] = useState("");
+  const [accountName, setAccountName] = useState("Anavrinsic");
   const [characterName, setCharacterName] = useState("");
   const [accountData, setAccountData] = useState([]);
   const [characterData, setCharacterData] = useState({});
